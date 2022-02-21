@@ -3392,7 +3392,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6965360263940459509, guid: 31311ef563eb69843a0fd95b7b133d39, type: 3}
 --- !u!4 &360510492 stripped
@@ -6333,11 +6333,11 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
+  m_Height: 1.76
+  m_Radius: 0.22
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.08
+  m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &671822440
@@ -6352,6 +6352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 195a86f9f66c7404d8592ceecd28fb0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCamera: {fileID: 728514693}
+  movementSpeed: 4
 --- !u!1001 &679901748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6648,7 +6650,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 696420394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.39999998, y: 0.78, z: -3.0999985}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 728514693}
@@ -6922,13 +6924,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09babba04145c454295e96ffbc1164ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetCamera: {fileID: 696420397}
-  followTarget: {fileID: 1041854125}
-  offset: {x: 0.8, y: 0.78}
-  shoulderSide: 1
-  cameraDistance: 3.1
-  sensitivity: 300
-  lookUpClamp: 80
+  target: {fileID: 671822438}
+  mouseSensitivity: 150
+  offset: {x: 0.9, y: 0.65}
+  distance: 2.7
+  shoulderSize: 1
+  minLookAngle: -50
+  maxLookAngle: 60
 --- !u!4 &730005193 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4265789803043016, guid: f46943be9ee7353449ca75c6fd768ddf, type: 3}
@@ -9505,7 +9507,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1041854124}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 671822438}

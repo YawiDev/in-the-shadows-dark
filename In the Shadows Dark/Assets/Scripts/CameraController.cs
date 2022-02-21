@@ -1,47 +1,49 @@
 using UnityEngine;
 
-[ExecuteAlways]
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] Transform targetCamera;
+    [SerializeField] Transform target;
+    [SerializeField] float mouseSensitivity = 10;
 
-    [Header("Following")]
-    [SerializeField] Transform followTarget;
-
+    [Header("Orbit")]
     [SerializeField] Vector2 offset;
-    [SerializeField, Range(0, 1)] float shoulderSide = 1;
-    [SerializeField] float cameraDistance = 2;
+    [SerializeField] float distance = 3;
+    [SerializeField, Range(0, 1)] float shoulderSize = 1;
 
     [Header("Looking")]
-    [SerializeField] float sensitivity = 300;
-    [SerializeField] float lookUpClamp = 80;
+    [SerializeField, Range(-90, 0)] float minLookAngle = -80;
+    [SerializeField, Range(0, 90)] float maxLookAngle = 80;
 
-    float mouseX;
-    float mouseY;
+    float mouseX, mouseY;
 
-    void Start () {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+    float xRotation, yRotation;
 
-        FollowTarget();
+    void Update () {
+        GetInput();
+
+        OrbitTarget();
+        OffsetCamera();
     }
 
-    void LateUpdate () {
-        //FollowTarget();
-
-        mouseX += Input.GetAxis("Mouse X") * sensitivity * Time.smoothDeltaTime;
-        mouseY -= Input.GetAxis("Mouse Y") * sensitivity * Time.smoothDeltaTime;
-
-        mouseY = Mathf.Clamp(mouseY, -lookUpClamp, lookUpClamp);
-
-        transform.localRotation = Quaternion.Euler(mouseY, mouseX, 0);
+    void GetInput () {
+        mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.smoothDeltaTime;
+        mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.smoothDeltaTime;
     }
 
-    void FollowTarget () {
-        transform.position = followTarget.position;
+    void OrbitTarget () {
+        xRotation -= mouseY;
+        yRotation += mouseX;
 
-        Vector3 targetOffset = new Vector3(offset.x * (shoulderSide - 0.5f), offset.y, -cameraDistance);
+        xRotation = Mathf.Clamp(xRotation, minLookAngle, maxLookAngle);
 
-        targetCamera.transform.position = followTarget.position + targetOffset;
+        Vector3 targetRotation = new Vector3(xRotation, yRotation);
+
+        transform.eulerAngles = targetRotation;
+    }
+
+    void OffsetCamera () {
+        Vector3 targetOffset = (transform.forward * -distance) + (transform.right * offset.x * (shoulderSize - 0.5f)) + (transform.up * offset.y);
+
+        transform.position = target.position + targetOffset;
     }
 }
