@@ -18,6 +18,11 @@ public class CameraController : MonoBehaviour
 
     float xRotation, yRotation;
 
+    void Awake () {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
     void Update () {
         GetInput();
 
