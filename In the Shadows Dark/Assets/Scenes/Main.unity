@@ -7341,7 +7341,6 @@ GameObject:
   m_Component:
   - component: {fileID: 728514693}
   - component: {fileID: 728514694}
-  - component: {fileID: 728514695}
   m_Layer: 0
   m_Name: Camera Holder
   m_TagString: Untagged
@@ -7378,23 +7377,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 671822438}
   mouseSensitivity: 150
-  offset: {x: 0.7, y: 0.4}
+  offset: {x: 0.5, y: 0.4}
   distance: 3
-  shoulderSize: 1
+  shoulderSide: 1
+  shoulderSwitchSpeed: 0.4
   minLookAngle: -40
   maxLookAngle: 60
---- !u!114 &728514695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 728514692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abc29b5c5ecc5af46a747533e31129e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &730005193 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4265789803043016, guid: f46943be9ee7353449ca75c6fd768ddf, type: 3}
@@ -8842,7 +8830,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}
-  m_Intensity: 0.2
+  m_Intensity: 0.95
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -8881,7 +8869,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
