@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     PlayerAnimator playerAnimator;
     Vector3 velocity;
 
-    bool isMoving;
+    public bool isMoving { get; private set; }
     bool isRunning;
 
     void Awake () {

@@ -55,7 +55,6 @@ public class CameraController : MonoBehaviour
 
     void OffsetCamera () {
         float targetShoulderSide = shoulderSide * 2 - 1;
-        print(targetShoulderSide);
         Vector3 targetOffset = (transform.forward * -distance) + (transform.right * offset.x * targetShoulderSide) + (transform.up * offset.y);
 
         transform.position = target.position + targetOffset;
